@@ -1,2 +1,1 @@
 # commcepta
-Projeto para vaga
