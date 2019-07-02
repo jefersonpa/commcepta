@@ -5,10 +5,9 @@
 // Base
 @import "base/_normalize";
 
-// Layout
-
 // Componentes
+@import "components/_navbar.scss";
+@import "components/_card.scss";
 
-// Páginas
-
-// Vendor
+// Paginas
+@import "pages/_index.scss";
