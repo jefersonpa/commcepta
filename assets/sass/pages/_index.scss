@@ -4,6 +4,14 @@
     padding-right: 255px;
     padding-top: 15px;
 
+    @media (max-width: $breakpoint-xl) {
+      padding-left: 173px;
+      padding-right: 173px;
+    }
+    @media (max-width: $breakpoint-lg) {
+      padding-left: 91px;
+      padding-right: 91px;
+    }
     @media (max-width: $breakpoint-md) {
       padding-left: 10px;
       padding-right: 10px;
