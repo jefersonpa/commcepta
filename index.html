@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="pt-br" xml:lang="pt-br">
   <head>
     <title>Space Box</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.min.css" />
@@ -26,107 +26,6 @@
       <!-- Todos funcionarios -->
       <div class="cardContainerTotal" id="cardData"></div>
     </div>
-    <script type="text/javascript">
-      var funcionarios = [];
-      function loadPage(url, element) {
-        req = new XMLHttpRequest();
-        req.onload = function() {
-          // in case of network errors this might not give reliable results
-          return;
-        };
-        req.open('GET', url, false);
-        req.send(null);
-        element.innerHTML = req.responseText;
-      }
-
-      function toggleMenu() {
-        var x = document.getElementById('nav');
-        if (x.className === 'active') {
-          x.className = '';
-        } else {
-          x.className = 'active';
-        }
-      }
-
-      function changeSelectedValue(element) {
-        document.getElementById('cardSelected').innerHTML =
-          "<div class='card card__selecionado' > " +
-          "  <img src='./assets/img/" +
-          element.foto +
-          "' " +
-          "alt='Avatar do(a) funcionário(a) " +
-          element.nome +
-          "' class='imgCard' /> " +
-          "  <div class='cardContainer'> " +
-          '    <p>NOME: <b>' +
-          element.nome +
-          '</b></p> ' +
-          '    <p>CARGO: <b>' +
-          element.cargo +
-          '</b></p> ' +
-          '    <p>IDADE: <b>' +
-          element.idade +
-          '</b></p> ' +
-          '  </div> ' +
-          '</div>  ';
-      }
-
-      function toggleSelected(id) {
-        document.getElementById('cardSelected').innerHTML = '';
-
-        funcionarios.forEach(element => {
-          if ('card' + element.id != id) {
-            // Retira a seleção dos outros
-            var x = document.getElementById('card' + element.id);
-            x.className = 'card';
-          } else {
-            // Seleciona o item se ainda não estava
-            var x = document.getElementById(id);
-            if (x.className === 'card') {
-              x.className += ' card-selected';
-              changeSelectedValue(element);
-            } else {
-              x.className = 'card';
-            }
-          }
-        });
-      }
-
-      // Carrega a navbar
-      loadPage('./components/navbar.html', document.getElementById('navbarPage'));
-
-      // Pega os dados do JSON e renderiza os cards com os dados
-      fetch('./assets/dados.json')
-        .then(response => response.json())
-        .then(json => {
-          funcionarios = json;
-          document.getElementById('cardData').innerHTML = '';
-
-          funcionarios.forEach(element => {
-            document.getElementById('cardData').innerHTML +=
-              "<div class='card'  id='card" +
-              element.id +
-              '\'  onclick="toggleSelected(this.id)">' +
-              "<img src='./assets/img/" +
-              element.foto +
-              "' " +
-              "alt='Avatar do(a) funcionário(a) " +
-              element.nome +
-              "' class='imgCard' /> <div class='cardBadge'>1 </div>" +
-              "     <div class='cardContainer'>" +
-              '       <h4>' +
-              '         <b>' +
-              element.nome +
-              '         </b>' +
-              '       </h4> ' +
-              '       <p>' +
-              element.cargo +
-              '       </p> ' +
-              '     </div> ' +
-              '   </div>  ' +
-              ' </div>';
-          });
-        });
-    </script>
+    <script type="text/javascript" src="./assets/js/index.js"></script>
   </body>
 </html>
