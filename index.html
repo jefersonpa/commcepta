@@ -1,48 +1,110 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.min.css"  />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.min.css" />
     <meta name="theme-color" content="#4dd2d1" />
-
-    <script>
-    
-    function loadPage(url, element) {
-        req = new XMLHttpRequest();
-        req.open('GET', url, false);
-        req.send(null);
-        element.innerHTML = req.responseText;
-      }
-    </script>
   </head>
   <body>
     <div id="navbarPage"></div>
     <div class="index__container">
-        <div class="card">
-            <img
-              src="https://www.rodinoliolusso.com/media/images/products/566x496/rn_064J10_566x496_9.gif"
-              alt="Avatar"
-              class="imgCard"
-            />
-            <div class="cardContainer">
-              <h4><b>Exemplo de nome</b></h4>
-              <p>Exemplo de descrição</p>
-            </div>
-          </div> 
+
+       
+          <div id="cardSelected"></div>
+          <div id="cardData"></div>
         </div>
+
     </div>
     <script>
+      var funcionarios = [];
+      function loadPage(url, element) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, false);
+        req.send(null);
+        element.innerHTML = req.responseText;
+      }
+
       function toggleMenu() {
-        var x = document.getElementById('navbar');
-        if (x.className === 'topnav') {
-          x.className += ' mobile';
+        var x = document.getElementById("navbar");
+        if (x.className === "topnav") {
+          x.className += " mobile";
         } else {
-          x.className = 'topnav';
+          x.className = "topnav";
         }
       }
-     loadPage('navbar.html', document.getElementById('navbarPage'));
+
+      function toggleSelected(id) {
+        document.getElementById("cardSelected").innerHTML = "";
+
+        funcionarios.forEach(element => {
+          if ('card'+element.id != id) {
+
+            var x = document.getElementById('card'+element.id);
+            x.className = "card";
+
+
+
+
+
+
+          } else {
+            var x = document.getElementById(id);
+            if (x.className === "card") {
+              x.className += " card-selected";
+
+              document.getElementById("cardSelected").innerHTML =  "<div class='card card__selecionado' > "+
+              "  <img "+
+              "    src='https://www.rodinoliolusso.com/media/images/products/566x496/rn_064J10_566x496_9.gif' "+
+              "    alt='Avatar' "+
+              "    class='imgCard' "+
+              "  /> "+
+              "  <div class='cardContainer'> "+
+              "    <p><b>NOME: </b>"+element.nome+"</p> "+
+              "    <p><b>CARGO: </b>"+element.cargo+"</p> "+
+              "    <p><b>IDADE: </b>"+element.idade+"</p> "+
+              "  </div> "+
+              "</div>  ";
+            } else {
+              x.className = "card";
+            }
+          }
+        });
+      }
+
+      loadPage("navbar.html", document.getElementById("navbarPage"));
+
+      fetch("./assets/dados.json")
+        .then(response => response.json())
+        .then(json => {
+          funcionarios = json;
+          document.getElementById("cardData").innerHTML = "";
+
+          funcionarios.forEach(element => {
+            document.getElementById("cardData").innerHTML +=
+              "<div class='card'  id='card"+element.id+"'  onclick=\"toggleSelected(this.id)\"><img src='./assets/img/" +
+              element.foto +
+              "' " +
+              "alt='Avatar' class='imgCard' /> " +
+              "     <div class='cardContainer'>         " +
+              "       <h4><b>" +
+              element.nome +
+              "</b></h4> " +
+              "       <p>" +
+              element.cargo +
+              "</p> " +
+              "     </div> " +
+              "   </div>  " +
+              " </div>";
+          });
+        });
     </script>
   </body>
 </html>
