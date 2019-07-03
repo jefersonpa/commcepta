@@ -14,17 +14,20 @@
   position: relative;
   height: 200px;
   display: inline-block;
-  width: 100%;
 
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 
-  @media (min-width: $breakpoint-xl) {
-    width: 33%;
+  width: 100% !important;
+  @media (min-width: $breakpoint-md) {
+    width: 50% !important;
   }
-  @media (min-width: $breakpoint-md) and (max-width: $breakpoint-xl) {
-    width: 50%;
+  @media (min-width: $breakpoint-lg) {
+    width: 50% !important;
+  }
+  @media (min-width: 1500px) {
+    width: 33% !important;
   }
 
   &__selecionado {

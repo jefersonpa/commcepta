@@ -2,7 +2,7 @@
   &__container {
     padding-left: 255px;
     padding-right: 255px;
-    padding-top: 15px;
+    padding-top: 115px; // 100px do navbar + 15 de padding
 
     @media (max-width: $breakpoint-xl) {
       padding-left: 173px;

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
     <meta name="theme-color" content="#4dd2d1" />
   </head>
   <body>
@@ -23,90 +22,90 @@
       var funcionarios = [];
       function loadPage(url, element) {
         req = new XMLHttpRequest();
-        req.open("GET", url, false);
+        req.open('GET', url, false);
         req.send(null);
         element.innerHTML = req.responseText;
       }
 
       function toggleMenu() {
-        var x = document.getElementById("navbar");
-        if (x.className === "topnav") {
-          x.className += " open";
+        var x = document.getElementById('nav');
+        if (x.className === 'active') {
+          x.className = '';
         } else {
-          x.className = "topnav";
+          x.className = 'active';
         }
       }
 
+      function changeSelectedValue(element) {
+        document.getElementById('cardSelected').innerHTML =
+          "<div class='card card__selecionado' > " +
+          "  <img src='./assets/img/" +
+          element.foto +
+          "' " +
+          "alt='Avatar' class='imgCard' /> " +
+          "  <div class='cardContainer'> " +
+          '    <p><b>NOME: </b>' +
+          element.nome +
+          '</p> ' +
+          '    <p><b>CARGO: </b>' +
+          element.cargo +
+          '</p> ' +
+          '    <p><b>IDADE: </b>' +
+          element.idade +
+          '</p> ' +
+          '  </div> ' +
+          '</div>  ';
+      }
+
       function toggleSelected(id) {
-        document.getElementById("cardSelected").innerHTML = "";
+        document.getElementById('cardSelected').innerHTML = '';
 
         funcionarios.forEach(element => {
-          if ("card" + element.id != id) {
+          if ('card' + element.id != id) {
             // Retira a seleção dos outros
-            var x = document.getElementById("card" + element.id);
-            x.className = "card";
+            var x = document.getElementById('card' + element.id);
+            x.className = 'card';
           } else {
             // Seleciona o item se ainda não estava
             var x = document.getElementById(id);
-            if (x.className === "card") {
-              x.className += " card-selected";
-
-              document.getElementById("cardSelected").innerHTML =
-                "<div class='card card__selecionado' > " +
-                "  <img src='./assets/img/" +
-                element.foto +
-                "' " +
-                "alt='Avatar' class='imgCard' /> " +
-                "  <div class='cardContainer'> " +
-                "    <p><b>NOME: </b>" +
-                element.nome +
-                "</p> " +
-                "    <p><b>CARGO: </b>" +
-                element.cargo +
-                "</p> " +
-                "    <p><b>IDADE: </b>" +
-                element.idade +
-                "</p> " +
-                "  </div> " +
-                "</div>  ";
+            if (x.className === 'card') {
+              x.className += ' card-selected';
+              changeSelectedValue(element);
             } else {
-              x.className = "card";
+              x.className = 'card';
             }
           }
         });
       }
 
       // Carrega a navbar
-      loadPage(
-        "./components/navbar.html",
-        document.getElementById("navbarPage")
-      );
+      loadPage('./components/navbar.html', document.getElementById('navbarPage'));
 
       // Pega os dados do JSON e renderiza os cards com os dados
-      fetch("./assets/dados.json")
+      fetch('./assets/dados.json')
         .then(response => response.json())
         .then(json => {
           funcionarios = json;
-          document.getElementById("cardData").innerHTML = "";
+          document.getElementById('cardData').innerHTML = '';
 
           funcionarios.forEach(element => {
-            document.getElementById("cardData").innerHTML +=
+            document.getElementById('cardData').innerHTML +=
               "<div class='card'  id='card" +
               element.id +
-              "'  onclick=\"toggleSelected(this.id)\"><img src='./assets/img/" +
+              '\'  onclick="toggleSelected(this.id)"><img src=\'./assets/img/' +
               element.foto +
               "' " +
               "alt='Avatar' class='imgCard' /> " +
               "     <div class='cardContainer'>         " +
-              "       <h4><b>" +
+              '       <h4><b>' +
               element.nome +
-              "</b></h4> " +
-              "       <p>" +
+              '</b></h4> ' +
+              '       <p>' +
               element.cargo +
-              "</p> " +
-              "     </div> " +
-              "   </div>  " +
-              " </div>";
+              '</p> ' +
+              '     </div> ' +
+              '   </div>  ' +
+              ' </div>';
           });
         });
     </script>
