@@ -23,7 +23,6 @@
   width: 15px;
   height: 15px;
   font-weight: bold;
-  // font-size: 20px;
 }
 
 .card {
@@ -68,6 +67,15 @@
       margin-bottom: 50px !important;
     }
   }
+}
+
+.card p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.card h4 {
+  margin: 0;
 }
 
 /* On mouse-over, add a deeper shadow */
