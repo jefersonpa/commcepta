@@ -8,16 +8,18 @@ header {
   background-image: linear-gradient(to right, $cor-primaria, $cor-secundaria);
   z-index: 9999 !important;
 
-  padding: 0px;
-
+  // Container para a posição horizontal da logo
+  padding: 0 255px;
   @media (max-width: $breakpoint-xl) {
     padding: 0 173px;
   }
   @media (max-width: $breakpoint-lg) {
     padding: 0 91px;
   }
-  @media (min-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-md) {
     padding: 0 10px;
+  }
+  @media (min-width: $breakpoint-md) {
     height: 100px;
   }
 }
@@ -30,7 +32,7 @@ header .logo {
   float: left;
   font-weight: bold;
 
-  // centraliza
+  // centraliza verticalmente
   position: absolute;
   top: 50%;
   -ms-transform: translateY(-50%);
@@ -45,12 +47,24 @@ header .logo {
 header nav {
   float: right;
   @media (min-width: $breakpoint-md) {
-    // centraliza
+    // centraliza verticalmente
     position: absolute;
     top: 50%;
     right: 0;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+  }
+
+  // Padding a direita para os botões, em celular é 0
+  padding-right: 255px;
+  @media (max-width: $breakpoint-xl) {
+    padding-right: 173px;
+  }
+  @media (max-width: $breakpoint-lg) {
+    padding-right: 91px;
+  }
+  @media (max-width: $breakpoint-md) {
+    padding-right: 0;
   }
 }
 

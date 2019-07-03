@@ -1,13 +1,10 @@
 /*  Card */
 .cardContainerTotal {
+  // Engloba todos os card's
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
-}
-
-.cardTable {
-  display: table-cell;
 }
 
 .card {
@@ -15,7 +12,7 @@
   height: 200px;
   display: inline-block;
 
-  /* Add shadows to create the "card" effect */
+  // Sombra
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
 
