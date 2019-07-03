@@ -58,15 +58,15 @@
           element.nome +
           "' class='imgCard' /> " +
           "  <div class='cardContainer'> " +
-          '    <p><b>NOME: </b>' +
+          '    <p>NOME: <b>' +
           element.nome +
-          '</p> ' +
-          '    <p><b>CARGO: </b>' +
+          '</b></p> ' +
+          '    <p>CARGO: <b>' +
           element.cargo +
-          '</p> ' +
-          '    <p><b>IDADE: </b>' +
+          '</b></p> ' +
+          '    <p>IDADE: <b>' +
           element.idade +
-          '</p> ' +
+          '</b></p> ' +
           '  </div> ' +
           '</div>  ';
       }
@@ -106,19 +106,22 @@
             document.getElementById('cardData').innerHTML +=
               "<div class='card'  id='card" +
               element.id +
-              '\'  onclick="toggleSelected(this.id)"><img src=\'./assets/img/' +
+              '\'  onclick="toggleSelected(this.id)">' +
+              "<img src='./assets/img/" +
               element.foto +
               "' " +
               "alt='Avatar do(a) funcionário(a) " +
               element.nome +
-              "' class='imgCard' /> " +
-              "     <div class='cardContainer'>         " +
-              '       <h4><b>' +
+              "' class='imgCard' /> <div class='cardBadge'>1 </div>" +
+              "     <div class='cardContainer'>" +
+              '       <h4>' +
+              '         <b>' +
               element.nome +
-              '</b></h4> ' +
+              '         </b>' +
+              '       </h4> ' +
               '       <p>' +
               element.cargo +
-              '</p> ' +
+              '       </p> ' +
               '     </div> ' +
               '   </div>  ' +
               ' </div>';

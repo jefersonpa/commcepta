@@ -11,6 +11,21 @@
   }
 }
 
+.cardBadge {
+  position: absolute;
+  left: 134px; // 139 tamanho img - 5 padding do badge
+  top: 34px; // 30 Margem + 5 padding do badge
+  background: $cor-primaria;
+  text-align: center;
+  border-radius: 50%;
+  color: black;
+  padding: 10px;
+  width: 15px;
+  height: 15px;
+  font-weight: bold;
+  // font-size: 20px;
+}
+
 .card {
   @media (min-width: $breakpoint-md) {
     margin-left: -15px; // Margin entre cards
@@ -26,6 +41,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
   transition: 0.3s;
 
+  // Tamanho ocupado pelo card
   width: 100% !important;
   @media (min-width: $breakpoint-md) {
     width: 50% !important;
@@ -37,6 +53,7 @@
     width: 33% !important;
   }
 
+  // Card grande
   &__selecionado {
     width: 100% !important;
     margin-right: 0;
