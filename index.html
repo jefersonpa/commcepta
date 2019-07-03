@@ -3,11 +3,17 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="icon" href="./favicon.png" type="image/x-icon" />
 
     <meta name="theme-color" content="#4dd2d1" />
+    <meta name="description" content="Projeto para vaga na empresa Commcepta." />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Jeferson Pacheco" />
+    <meta http-equiv="Content-Language" content="pt-br" />
   </head>
   <body>
     <!-- Navbar -->
@@ -18,10 +24,14 @@
       <!-- Todos funcionarios -->
       <div class="cardContainerTotal" id="cardData"></div>
     </div>
-    <script>
+    <script type="text/javascript">
       var funcionarios = [];
       function loadPage(url, element) {
         req = new XMLHttpRequest();
+        req.onload = function() {
+          // in case of network errors this might not give reliable results
+          return;
+        };
         req.open('GET', url, false);
         req.send(null);
         element.innerHTML = req.responseText;
@@ -42,7 +52,9 @@
           "  <img src='./assets/img/" +
           element.foto +
           "' " +
-          "alt='Avatar' class='imgCard' /> " +
+          "alt='Avatar do(a) funcionário(a) " +
+          element.nome +
+          "' class='imgCard' /> " +
           "  <div class='cardContainer'> " +
           '    <p><b>NOME: </b>' +
           element.nome +
@@ -95,7 +107,9 @@
               '\'  onclick="toggleSelected(this.id)"><img src=\'./assets/img/' +
               element.foto +
               "' " +
-              "alt='Avatar' class='imgCard' /> " +
+              "alt='Avatar do(a) funcionário(a) " +
+              element.nome +
+              "' class='imgCard' /> " +
               "     <div class='cardContainer'>         " +
               '       <h4><b>' +
               element.nome +

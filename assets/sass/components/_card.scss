@@ -5,15 +5,25 @@
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
+
+  @media (min-width: $breakpoint-md) {
+    padding-left: 7.5px; // Corrige o gap deixado pela margin dos cards
+  }
 }
 
 .card {
+  @media (min-width: $breakpoint-md) {
+    margin-left: -15px; // Margin entre cards
+  }
+  background-color: #fff;
   position: relative;
   height: 200px;
   display: inline-block;
 
+  margin-bottom: 15px;
+
   // Sombra
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2) !important;
   transition: 0.3s;
 
   width: 100% !important;
@@ -29,7 +39,14 @@
 
   &__selecionado {
     width: 100% !important;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
 
+    @media (min-width: $breakpoint-md) {
+      width: calc(100% + 15px) !important;
+      margin-left: -7.5px;
+    }
     @media (max-width: $breakpoint-md) {
       margin-bottom: 50px !important;
     }
@@ -43,11 +60,15 @@
 
 /* Add some padding inside the card container */
 .cardContainer {
-  position: absolute;
   text-align: left;
-  top: 0%;
   width: auto;
   display: inline-block;
+
+  // centraliza verticalmente
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .imgCard {
   width: 139px;
@@ -55,6 +76,7 @@
   border-radius: 50%;
   margin: 30px;
   display: inline-block;
+  object-fit: cover;
 }
 
 .card-selected {
